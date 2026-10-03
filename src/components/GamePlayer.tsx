@@ -31,6 +31,7 @@ export function GamePlayer({ game }: { game: Game }) {
   const completedAttempt = useRef(0);
   const { favorites, toggle, played, loaded } = useLibrary();
   const saved = favorites.includes(game.id);
+  const externalUrl = game.launchType === "external" && game.externalUrl === "https://www.kodub.com/apps/polytrack" ? game.externalUrl : null;
   const comingSoon = game.availability === "coming-soon";
 
   const focusPlayer = useCallback(() => {
@@ -205,6 +206,14 @@ export function GamePlayer({ game }: { game: Game }) {
                     <ArrowLeft className="browse-arrow" size={16} />
                   </Link>
                 </>
+              ) : externalUrl ? (
+                <>
+                  <a href={externalUrl} target="_blank" rel="noopener noreferrer" className="play-button">
+                    <Play fill="currentColor" size={22} />
+                    Play on official site
+                  </a>
+                  <p>Opens the creator’s browser game in a new tab.</p>
+                </>
               ) : (
                 <>
                   <button onClick={start} className="play-button">
@@ -260,7 +269,7 @@ export function GamePlayer({ game }: { game: Game }) {
             <span>Favorite</span>
           </button>
           <button
-            disabled={comingSoon}
+            disabled={comingSoon || Boolean(externalUrl)}
             aria-label="Reload game"
             onClick={start}
           >
@@ -268,6 +277,7 @@ export function GamePlayer({ game }: { game: Game }) {
             <span>Reload</span>
           </button>
           <button
+            disabled={Boolean(externalUrl)}
             aria-label={fullscreen ? "Exit fullscreen" : "Enter fullscreen"}
             onClick={toggleFullscreen}
           >

@@ -10,12 +10,18 @@ const games = JSON.parse(
     .replace(/;\s*$/, ""),
 );
 test("catalog entries are unique and all playable packages and thumbnails exist", () => {
-  assert.equal(games.length, 65);
-  assert.equal(new Set(games.map((g) => g.id)).size, 65);
+  assert.equal(games.length, 66);
+  assert.equal(new Set(games.map((g) => g.id)).size, 66);
   for (const g of games) {
     assert.ok(
       fs.existsSync(new URL(`../public${g.thumbnail}`, import.meta.url)),
     );
+    if (g.externalUrl) {
+      assert.equal(g.launchType, "external");
+      assert.equal(g.externalUrl, "https://www.kodub.com/apps/polytrack");
+      assert.equal(g.gameUrl, undefined);
+      continue;
+    }
     assert.ok(isAllowedGameUrl(g.gameUrl));
     if (g.slug !== "block-world")
       assert.ok(
@@ -24,7 +30,7 @@ test("catalog entries are unique and all playable packages and thumbnails exist"
         ),
       );
   }
-  assert.equal(games.filter((g) => g.slug !== "block-world").length, 64);
+  assert.equal(games.filter((g) => g.slug !== "block-world" && !g.externalUrl).length, 64);
 });
 test("search normalizes alternate titles and searches metadata", () => {
   for (const q of ["snow rider", "snowrider", "SNOW RIDER"])

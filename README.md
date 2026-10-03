@@ -49,3 +49,5 @@ For another server, set `BASE_URL`. Without `CHROMIUM_PATH`, Playwright uses its
 Favorites (`app:favorites`) and history (`app:recent`) persist in localStorage. Repository adapters isolate storage from the UI. No analytics or ad scripts are included; ad slots reserve layout space only.
 
 See [reference analysis](docs/REFERENCE-ANALYSIS.md) and [validation](docs/VALIDATION.md) for observations and known differences.
+
+PolyTrack is listed with attribution to Kodub. Its Play on official site button opens https://www.kodub.com/apps/polytrack in a new tab. No PolyTrack assets are redistributed; its live availability, release version, and permission to embed have not been verified from this environment. External launches do not create local play history.

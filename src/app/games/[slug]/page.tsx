@@ -70,7 +70,9 @@ export default async function GamePage({
             <p className="package-note">
               {game.availability === "coming-soon"
                 ? "This game is coming soon. Explore the related games below while you wait."
-                : "Original Sproutplay mini-game. Keyboard and touch supported."}
+                : game.externalUrl
+                  ? "Created by Kodub. The official browser game opens in a new tab."
+                  : "Original Sproutplay mini-game. Keyboard and touch supported."}
             </p>
           </section>
         </section>

@@ -36,6 +36,37 @@ export const games: Game[] = [
     "author": "Sproutplay Studio"
   },
   {
+    "id": "polytrack",
+    "slug": "polytrack",
+    "title": "PolyTrack",
+    "alternateTitles": [
+      "poly track"
+    ],
+    "description": "PolyTrack is a low-poly racing game by Kodub with loops, jumps, and fast time trials. Play the official browser version on the creator’s website in a new tab.",
+    "category": "Racing",
+    "categories": [
+      "Racing"
+    ],
+    "tags": [
+      "racing",
+      "time-trial",
+      "3d"
+    ],
+    "thumbnail": "/thumbs/polytrack.svg",
+    "popular": true,
+    "new": true,
+    "launchType": "external",
+    "externalUrl": "https://www.kodub.com/apps/polytrack",
+    "aspectRatio": "900 / 527",
+    "controls": [
+      "Open the official game using the button above.",
+      "Follow the controls shown in the official game."
+    ],
+    "createdAt": "2026-10-03",
+    "playCount": 0,
+    "author": "Kodub"
+  },
+  {
     "id": "snow-sprint",
     "slug": "snow-sprint",
     "title": "Snow Sprint",

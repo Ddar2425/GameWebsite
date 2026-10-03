@@ -13,6 +13,7 @@ export interface Game {
   new?: boolean;
   launchType: "iframe" | "html5" | "external" | "webgl";
   gameUrl?: string;
+  externalUrl?: string;
   aspectRatio: string;
   controls: string[];
   createdAt: string;
